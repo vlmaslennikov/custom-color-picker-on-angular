@@ -1,1 +1,6 @@
-<p>color-picker works!</p>
+<input type="color" [value]='selectedColor' (click)="$event.preventDefault()" > 
+<button (click)=""></button>
+<ul class="palette-dropdown" *ngIf='' #paletteDropdown  >
+    <li class="color-variant" [value]='currentColor'> currentColor </li>
+    <li class="color-variant"  [value]='color' *ngFor="let color of palette" (click)="selectColor()" (keydown.enter)="selectColor()" ></li>
+</ul>
