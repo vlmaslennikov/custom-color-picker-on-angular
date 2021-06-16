@@ -1,3 +1,27 @@
-.color-variant{
+
+    .palette-main{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        width: 160px;
+        height: 210px;
+        border: 1px solid coral;
+
+        .color-variant{
+            margin: 0;
+            padding: 0;
+            width: 30%;
+            height: 50px;
+            border: 1px solid ;
+        }
+        .unselected{
+            opacity: 0.4;
+            border-color: darkcyan ;
+        }
+        .selected{
+            opacity: 1;
+            border-color: rgb(185, 130, 27);
+        }
+    }
     
-}

@@ -1,6 +1,11 @@
-<input type="color" [value]='selectedColor' (click)="$event.preventDefault()" > 
-<button (click)=""></button>
-<ul class="palette-dropdown" *ngIf='' #paletteDropdown  >
-    <li class="color-variant" [value]='currentColor'> currentColor </li>
-    <li class="color-variant"  [value]='color' *ngFor="let color of palette" (click)="selectColor()" (keydown.enter)="selectColor()" ></li>
-</ul>
+<input type="text" (click)="$event.preventDefault()" > 
+<button (click)="toggle=!toggle"></button> 
+<div *ngIf='toggle'>
+    <p class="color-variant"> currentColor </p>
+    <table class="palette-block"  #paletteDropdown >
+        <tr class="palette-main" appPicker>
+            <td class="color-variant unselected" tabindex="1" [style.backgroundColor]="color" *ngFor="let color of palette" (click)="addFocus($event.target)" (keydown.enter)="selectColor()"></td>
+        </tr>
+    </table>
+</div>
+
