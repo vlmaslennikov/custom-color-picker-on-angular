@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Palette } from '../interfaces/palette';
 
 @Component({
   selector: 'app-color-picker',
@@ -6,20 +7,19 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./color-picker.component.scss']
 })
 export class ColorPickerComponent   {
-  palette:string[]=[
+  palette: Palette={
+    selectedColor:"red",
+    allColors : [
     'red','green','blue','black','grey','orange','yellow','pink','white','violet','indigo','brown'
-  ];
+  ]
+  }
   selectedColor!:string;
   currentColor!:string;
   toggle=true;
   @ViewChild('paletteDropdown') paletteDropdown!:ElementRef
 
-  selectColor(){
+  selectColor(value:string){
+    this.palette.selectedColor=value;
+  }
 
-  }
-  addFocus(eventTarget:any){
-    // Array.from(eventTarget.parentElement.cells).map((el:any)=>el.classList.remove('selected'));
-    // eventTarget.focus();
-    // eventTarget.classList.add('selected');
-  }
 }

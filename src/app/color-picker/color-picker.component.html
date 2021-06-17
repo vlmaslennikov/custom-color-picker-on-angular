@@ -1,11 +1,19 @@
-<input type="text" (click)="$event.preventDefault()" > 
-<button (click)="toggle=!toggle"></button> 
+<div>
+    <input class="checkbox-toggle" type="checkbox" (change)="toggle=!toggle" >
+    <div class="arrows-img"></div>
+</div>
+
 <div *ngIf='toggle'>
-    <p class="color-variant"> currentColor </p>
-    <table class="palette-block"  #paletteDropdown >
-        <tr class="palette-main" appPicker>
-            <td class="color-variant unselected" tabindex="1" [style.backgroundColor]="color" *ngFor="let color of palette" (click)="addFocus($event.target)" (keydown.enter)="selectColor()"></td>
+    <div class="current-color-block">
+        <div class="current-color-title"> Current color :  </div>
+        <div class="current-color" [style.backgroundColor]="palette.selectedColor"></div>
+    </div>
+    
+    <table class="palette-block"  #paletteDropdown  appPicker (setColor)="selectColor($event)">
+        <tr class="palette-main">
+            <td class="color-variant unselected" tabindex="1" [style.backgroundColor]="color" *ngFor="let color of palette.allColors" ></td>
         </tr>
     </table>
 </div>
+
 
