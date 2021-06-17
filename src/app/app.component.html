@@ -10,7 +10,7 @@
       <label>Color
         <app-color-picker name="selectedColor" (exportColor)="insertColor($event)"  [colorsList]='colors'  [pickedColor]='selectedColor' ></app-color-picker>
       </label>
-      <input type="text" name="selectedColor"  [(ngModel)]="selectedColor"  >
+      <input formControlName="color" type="text" name="selectedColor" >
     </div>
      
   </form>
