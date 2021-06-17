@@ -1,5 +1,9 @@
 
-    .palette-main{
+    *{
+        margin: 0;
+        padding: 0;
+    }
+   .palette-main{
         margin: 0;
         padding: 0;
         display: flex;
@@ -27,21 +31,13 @@
         height:50px;
         border: 1px solid ;
     }
-    .current-color-block{
-        width: 153.5px;
-        display: flex;
-        justify-content: space-between;
-       
-    }
-    .current-color-title{
-        font-size: 10px;
-    }
+    
     .current-color{
 
         padding: 0;
-        margin: 0;
-        width: 20px;
-        height:20px;
+        margin: auto 0;
+        width: 13px;
+        height:13px;
         border:1px solid cadetblue;
     }
 
@@ -52,46 +48,47 @@
     
 
     .checkbox-toggle {
-        margin: auto 15px;
+        margin: auto 5px auto 0;
         opacity: 0;
         cursor: pointer;
         position: relative;
         &:checked {
-            & + div {
-                .todo-title {
-                    text-decoration: line-through;
-                }
-            }
-            & + div::before {
+            
+            & + .arrows-img::before {
                 content: "";
-                // background-image: url(" ");
+                background-image: url("../../assets/images/arrow-img.png");
                 background-size: 100%;
                 background-repeat: no-repeat;
                 position: absolute;
                 z-index: -2;
-                top: 35%;
-                left: -32px;
-                width: 20px;
-                height: 20px;
+                top: 16%;
+                width: 14px;
+                height: 14px;
             }
         }
         &:not(:checked) {
-            & + div {
-                .todo-title {
-                    text-decoration: none;
-                }
-            }
-            & + div::before {
+           
+            & + .arrows-img::before {
                 content: "";
-                // background-image: url(" ");
+                background-image: url("../../assets/images/arrow-img.png");
                 background-size: 100%;
                 background-repeat: no-repeat;
+                transform: rotate(0.5turn);
                 position: absolute;
                 z-index: -2;
-                top: 35%;
-                left: -32px;
-                width: 20px;
-                height: 20px;
+                top: 16%;
+                width: 14px;
+                height: 14px;
             }
         }
     }
+
+     
+   
+   .checkbox-block{
+       position: relative;
+   }
+
+   .color-selection{
+       display: flex;
+   }

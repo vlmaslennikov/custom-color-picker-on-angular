@@ -1,4 +1,19 @@
-<div class="wrapper">
-  <app-color-picker></app-color-picker>
+<div class="task-color-picker">
+
+  <div class="wrapper">
+    <app-color-picker [colorsList]='colors'></app-color-picker>
+  </div>
+  <hr>
+  
+  <form class="wrapper" >
+    <div  >
+      <label>Color
+        <app-color-picker name="selectedColor" (exportColor)="insertColor($event)"  [colorsList]='colors'  [pickedColor]='selectedColor' ></app-color-picker>
+      </label>
+      <input type="text" name="selectedColor"  [(ngModel)]="selectedColor"  >
+    </div>
+     
+  </form>
+
 </div>
-<hr>
+

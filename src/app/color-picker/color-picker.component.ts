@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Palette } from '../interfaces/palette';
 
 @Component({
@@ -7,19 +7,25 @@ import { Palette } from '../interfaces/palette';
   styleUrls: ['./color-picker.component.scss']
 })
 export class ColorPickerComponent   {
-  palette: Palette={
-    selectedColor:"red",
-    allColors : [
-    'red','green','blue','black','grey','orange','yellow','pink','white','violet','indigo','brown'
-  ]
+
+  @Input() colorsList!:string[];
+  @Input()pickedColor!:string ;
+  @Output() exportColor:EventEmitter<string> = new EventEmitter<string>()
+  palette!: Palette;
+  ngOnChanges(){
+    this.palette={
+      selectedColor: this.pickedColor||'red',
+      allColors : this.colorsList
+    }
   }
+
   selectedColor!:string;
   currentColor!:string;
   toggle=true;
-  @ViewChild('paletteDropdown') paletteDropdown!:ElementRef
 
   selectColor(value:string){
     this.palette.selectedColor=value;
+    this.exportColor.emit(value)
   }
 
 }
