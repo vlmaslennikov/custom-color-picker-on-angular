@@ -1,4 +1,4 @@
 export interface Palette {
-    selectedColor:string,
-    allColors:string[]
+  selectedColor: string;
+  allColors: string[];
 }

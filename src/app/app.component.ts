@@ -1,41 +1,81 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup , AbstractControl, ValidatorFn, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
+import { tap, distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-   colors:string[] = [
-    'red','green','blue','black','grey','orange','yellow','pink','white','violet','indigo','brown'
-  ]
-  selectedColor:string ='red';
-  form!: FormGroup;
-  constructor(
-    private readonly formBuilder: FormBuilder,
-  ){
+  colors: string[] = [
+    'red',
+    'green',
+    'blue',
+    'black',
+    'grey',
+    'orange',
+    'yellow',
+    'pink',
+    'white',
+    'violet',
+    'indigo',
+    'brown',
+  ];
+  selectedColor: string = 'red';
+  inputForColor!: FormControl;
+  incorrectValue: string = '';
 
+  insertColor(value: string) {
+    this.selectedColor = value;
   }
-  ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      color:['',[ Validators.required, this.colorValidator()]]
-    });
+  ngOnInit() {
+    this.inputForColor = new FormControl(this.selectedColor, [
+      Validators.required,
+      this.colorValidator,
+    ]);
+    this.inputForColor.statusChanges
+      .pipe(
+        debounceTime(1000),
+        distinctUntilChanged(),
+        tap((val) =>
+          val == 'INVALID'
+            ? (this.incorrectValue = this.inputForColor.errors?.message)
+            : (this.incorrectValue = '')
+        )
+      )
+      .subscribe();
   }
-  insertColor(value:string){
-     this.selectedColor=value;
-   }
-  
-  colorValidator(): ValidatorFn{
-     return (
-         control: AbstractControl
-      ): {[key: string]: boolean } | null => {
-        let colorRgEx: RegExp = /^[0-9]{20}(?!.)/ ;
-        let valid = !control.value || colorRgEx.test(control.value);
-        return valid ? null : { color: true }
-      }
+  ngAfterViewInit() {
+    this.inputForColor.valueChanges
+      .pipe(
+        map((val) => val.trim()),
+        debounceTime(700),
+        distinctUntilChanged(),
+        tap((value) => (this.selectedColor = value))
+      )
+      .subscribe();
+  }
+
+  colorValidator(formControl: FormControl) {
+    let colors: string[] = [
+      'red',
+      'green',
+      'blue',
+      'black',
+      'grey',
+      'orange',
+      'yellow',
+      'pink',
+      'white',
+      'violet',
+      'indigo',
+      'brown',
+    ];
+    if (colors.find((val) => val == formControl.value.trim())) {
+      return null;
+    } else {
+      return { message: 'Incorrect color name !!!' };
     }
-
+  }
 }
-
-

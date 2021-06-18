@@ -1,94 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.palette-main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 156px;
+    height: 206px;
+    border: 1px solid coral;
 
-    *{
-        margin: 0;
-        padding: 0;
-    }
-   .palette-main{
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        width: 153.5px;
-        height: 206px;
-        border: 1px solid coral;
-
-        .unselected{
-            opacity: 0.4;
-            border-color: wheat ;
-        }
-
-        .selected{
-            opacity: 1;
-            border-color: black;
-        }
+    .unselected {
+        opacity: 0.4;
+        border-color: wheat;
     }
 
-    .color-variant{
-        
-        margin: 0;
-        padding: 0;
-        width: 50px;
-        height:50px;
-        border: 1px solid ;
+    .selected {
+        opacity: 1;
+        border-color: black;
     }
-    
-    .current-color{
+}
 
-        padding: 0;
-        margin: auto 0;
-        width: 13px;
-        height:13px;
-        border:1px solid cadetblue;
-    }
+.color-variant {
+    margin: 0;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    border: 1px solid;
+}
 
-    .buttons-block{
-        width: 153.5px;
-        display: flex;
-    }
-    
+.current-color {
+    padding: 0;
+    margin: auto 0;
+    width: 13px;
+    height: 13px;
+    border: 1px solid cadetblue;
+}
 
-    .checkbox-toggle {
-        margin: auto 5px auto 0;
-        opacity: 0;
-        cursor: pointer;
-        position: relative;
-        &:checked {
-            
-            & + .arrows-img::before {
-                content: "";
-                background-image: url("../../assets/images/arrow-img.png");
-                background-size: 100%;
-                background-repeat: no-repeat;
-                position: absolute;
-                z-index: -2;
-                top: 16%;
-                width: 14px;
-                height: 14px;
-            }
-        }
-        &:not(:checked) {
-           
-            & + .arrows-img::before {
-                content: "";
-                background-image: url("../../assets/images/arrow-img.png");
-                background-size: 100%;
-                background-repeat: no-repeat;
-                transform: rotate(0.5turn);
-                position: absolute;
-                z-index: -2;
-                top: 16%;
-                width: 14px;
-                height: 14px;
-            }
+.buttons-block {
+    width: 153.5px;
+    display: flex;
+}
+
+.checkbox-toggle {
+    margin: auto 5px auto 0;
+    opacity: 0;
+    cursor: pointer;
+    position: relative;
+    &:checked {
+        & + .arrows-img::before {
+            content: "";
+            background-image: url("../../assets/images/arrow-img.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: -2;
+            top: 16%;
+            width: 14px;
+            height: 14px;
         }
     }
+    &:not(:checked) {
+        & + .arrows-img::before {
+            content: "";
+            background-image: url("../../assets/images/arrow-img.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            transform: rotate(0.5turn);
+            position: absolute;
+            z-index: -2;
+            top: 16%;
+            width: 14px;
+            height: 14px;
+        }
+    }
+}
 
-     
-   
-   .checkbox-block{
-       position: relative;
-   }
+.checkbox-block {
+    position: relative;
+}
 
-   .color-selection{
-       display: flex;
-   }
+.color-selection {
+    display: flex;
+}
