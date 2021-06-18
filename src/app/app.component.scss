@@ -1,11 +1,17 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
- .task-color-picker{
+.task-color-picker {
     display: flex;
 
-    .wrapper{
-        margin: 100px 50px;
+    .wrapper {
+        margin: 100px 200px;
     }
+}
+
+.incorrect-value {
+    color: red;
+    font-weight: bold;
+    font-size: 16px;
 }
